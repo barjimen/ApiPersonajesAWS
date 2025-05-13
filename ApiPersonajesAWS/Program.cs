@@ -32,8 +32,6 @@ app.MapScalarApiReference(opt =>
 });
 app.UseCors("corsenabled");
 app.MapOpenApi();
-
-
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
