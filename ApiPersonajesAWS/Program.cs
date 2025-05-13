@@ -5,6 +5,11 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(p => p.AddPolicy("corsenabled", options =>
+{
+    options.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 string connection = builder.Configuration.GetConnectionString("MySql");
@@ -20,7 +25,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 }
-app.MapScalarApiReference();
+app.MapScalarApiReference(opt =>
+{
+    opt.Title = "Scalar Personajes";
+    opt.Theme = ScalarTheme.BluePlanet;
+});
+app.UseCors("corsenabled");
 app.MapOpenApi();
 
 
