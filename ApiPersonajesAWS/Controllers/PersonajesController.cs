@@ -17,12 +17,14 @@ namespace ApiPersonajesAWS.Controllers
         }
 
         [HttpGet]
+        [Route("[action]")]
         public async Task<ActionResult<List<Personaje>>> GetPersonajes()
         {
             return await this.repo.GetPersonajesAsync();
         }
 
         [HttpPost]
+        [Route("[action]")]
         public async Task<ActionResult> CreatePersonaje(Personaje personaje)
         {
             await this.repo.CreatePersonaje(personaje.Nombre, personaje.Imagen);
@@ -30,6 +32,7 @@ namespace ApiPersonajesAWS.Controllers
         }
 
         [HttpPut]
+        [Route("[action]")]
         public async Task<ActionResult> UpdatePersonaje(Personaje personaje)
         {
             await this.repo.UpdatePersonaje(personaje);
@@ -37,6 +40,7 @@ namespace ApiPersonajesAWS.Controllers
         }
 
         [HttpGet]
+        [Route("[action]/{id}")]
         public async Task<ActionResult<Personaje>> Details(int id)
         {
             return await this.repo.GetPersonaje(id);

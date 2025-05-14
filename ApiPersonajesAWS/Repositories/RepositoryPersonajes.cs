@@ -43,7 +43,7 @@ namespace ApiPersonajesAWS.Repositories
             Personaje personaje = await this.GetPersonaje(perso.IdPersonaje);
             personaje.Nombre = perso.Nombre;
             personaje.Imagen = perso.Imagen;
-            await this.context.AddAsync(personaje);
+            this.context.Update(personaje);
             await this.context.SaveChangesAsync();
         }
     }
