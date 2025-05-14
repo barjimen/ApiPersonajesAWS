@@ -35,5 +35,11 @@ namespace ApiPersonajesAWS.Controllers
             await this.repo.UpdatePersonaje(personaje);
             return Ok();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<Personaje>> Details(int id)
+        {
+            return await this.repo.GetPersonaje(id);
+        }
     }
 }
